@@ -1,0 +1,10 @@
+<resources>
+    <string name="app_name">Ordering App</string>
+    <string name="get_start">Get Start</string>
+    <string name="welcom_to_our_order_app">Welcom To Our Order App</string>
+    <string name="search">Search...</string>
+    <string name="category">Category</string>
+    <string name="search_anything">Search anything...</string>
+    <string name="popular_coffees">Popular Coffees</string>
+    <string name="see_all">See all</string>
+</resources>
