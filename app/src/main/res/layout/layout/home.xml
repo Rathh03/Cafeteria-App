@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#2F2841">
+
+    <!-- Top Bar -->
+    <LinearLayout
+        android:id="@+id/topBar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="16dp"
+        android:orientation="horizontal"
+        android:gravity="center_vertical"
+        android:layout_alignParentTop="true">
+
+        <ImageView
+            android:src="@drawable/Menu"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:padding="12dp"
+            android:background="@drawable/bg_circle_dark"
+            android:contentDescription="Menu" />
+
+        <EditText
+            android:id="@+id/searchBar"
+            android:layout_width="0dp"
+            android:layout_height="48dp"
+            android:layout_weight="1"
+            android:layout_marginStart="12dp"
+            android:layout_marginEnd="12dp"
+            android:hint="Search"
+            android:textColor="#fff"
+            android:textColorHint="#ddd"
+            android:paddingHorizontal="16dp"
+            android:background="@drawable/bg_search" />
+
+        <ImageView
+            android:src="@drawable/Shopping"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:padding="12dp"
+            android:background="@drawable/bg_circle_dark"
+            android:contentDescription="Cart" />
+    </LinearLayout>
+
+    <!-- Filter Tabs -->
+    <HorizontalScrollView
+        android:layout_below="@id/topBar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="16dp"
+        android:layout_marginTop="8dp">
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center_vertical">
+
+            <Button style="@style/FilterButtonSelected" android:text="All" />
+            <Button style="@style/FilterButtonUnselected" android:text="Coffee" />
+            <Button style="@style/FilterButtonUnselected" android:text="Food" />
+            <Button style="@style/FilterButtonUnselected" android:text="Snack" />
+        </LinearLayout>
+    </HorizontalScrollView>
+
+    <!-- Product Grid -->
+    <GridView
+        android:id="@+id/productGrid"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:numColumns="2"
+        android:verticalSpacing="12dp"
+        android:horizontalSpacing="12dp"
+        android:stretchMode="columnWidth"
+        android:clipToPadding="false"
+        android:paddingBottom="60dp" />
+
+    <!-- Bottom Navigation -->
+    <LinearLayout
+        android:id="@+id/bottomNav"
+        android:layout_width="match_parent"
+        android:layout_height="70dp"
+        android:layout_alignParentBottom="true"
+        android:orientation="horizontal"
+        android:background="@drawable/bg_bottom_nav"
+        android:gravity="center">
+
+        <ImageView android:src="@drawable/Home" android:layout_width="24dp" android:layout_height="24dp" android:layout_weight="1" android:contentDescription="Home"/>
+        <ImageView android:src="@drawable/store" android:layout_width="24dp" android:layout_height="24dp" android:layout_weight="1" android:contentDescription="Bag"/>
+        <ImageView android:src="@drawable/Heart" android:layout_width="24dp" android:layout_height="24dp" android:layout_weight="1" android:contentDescription="Heart"/>
+        <ImageView android:src="@drawable/person" android:layout_width="24dp" android:layout_height="24dp" android:layout_weight="1" android:contentDescription="User"/>
+    </LinearLayout>
+</RelativeLayout>

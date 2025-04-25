@@ -1,0 +1,115 @@
+<!-- res/layout/register.xml -->
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="#2F2841"
+    android:padding="24dp"
+    android:gravity="center_horizontal">
+
+    <!-- Back Button -->
+    <ImageView
+        android:src="@drawable/Arrow_left"
+        android:layout_width="24dp"
+        android:layout_height="24dp"
+        android:layout_gravity="start"
+        android:contentDescription="Back" />
+
+    <!-- Logo -->
+    <ImageView
+        android:src="@drawable/ic_coffee"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:layout_marginTop="32dp"
+        android:layout_marginBottom="24dp"
+        android:contentDescription="Coffee Logo" />
+
+    <!-- Title -->
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Create an account"
+        android:textColor="#FFFFFF"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        android:layout_marginBottom="16dp" />
+
+    <!-- Full Name -->
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="48dp"
+        android:hint="Full Name"
+        android:padding="12dp"
+        android:background="@drawable/edit_text_bg"
+        android:textColor="#FFFFFF"
+        android:textColorHint="#CCCCCC"
+        android:layout_marginBottom="12dp" />
+
+    <!-- Email -->
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="48dp"
+        android:hint="Email Address"
+        android:padding="12dp"
+        android:background="@drawable/edit_text_bg"
+        android:textColor="#FFFFFF"
+        android:textColorHint="#CCCCCC"
+        android:inputType="textEmailAddress"
+        android:layout_marginBottom="12dp" />
+
+    <!-- Phone -->
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="48dp"
+        android:hint="Phone"
+        android:padding="12dp"
+        android:background="@drawable/edit_text_bg"
+        android:textColor="#FFFFFF"
+        android:textColorHint="#CCCCCC"
+        android:inputType="phone"
+        android:layout_marginBottom="12dp" />
+
+    <!-- Password -->
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="48dp"
+        android:hint="Password"
+        android:padding="12dp"
+        android:background="@drawable/edit_text_bg"
+        android:textColor="#FFFFFF"
+        android:textColorHint="#CCCCCC"
+        android:inputType="textPassword"
+        android:layout_marginBottom="12dp" />
+
+    <!-- Confirm Password -->
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="48dp"
+        android:hint="Confirm Password"
+        android:padding="12dp"
+        android:background="@drawable/edit_text_bg"
+        android:textColor="#FFFFFF"
+        android:textColorHint="#CCCCCC"
+        android:inputType="textPassword"
+        android:layout_marginBottom="16dp" />
+
+    <!-- Create Account Button -->
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="48dp"
+        android:text="Create account"
+        android:textStyle="bold"
+        android:backgroundTint="#FFFFFF"
+        android:textColor="#2F2841"
+        android:layout_marginBottom="24dp" />
+
+    <!-- Already have account -->
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Already have account? Sign in"
+        android:textColor="#FFFFFF"
+        android:textSize="12sp"
+        android:gravity="center" />
+
+</LinearLayout>
