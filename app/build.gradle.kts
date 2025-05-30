@@ -5,6 +5,7 @@ plugins {
 
     // Add this line for Parcelize
     id("kotlin-parcelize")
+    kotlin("kapt")
 }
 
 android {
@@ -59,6 +60,8 @@ dependencies {
     androidTestImplementation(libs.espresso.core)
 
     implementation("com.github.bumptech.glide:glide:4.13.0")
+    kapt("com.github.bumptech.glide:compiler:4.15.1")
+
     implementation("com.google.code.gson:gson:2.10.1")
     implementation ("androidx.lifecycle:lifecycle-viewmodel-ktx:2.4.0")
     implementation ("androidx.recyclerview:recyclerview:1.2.1")

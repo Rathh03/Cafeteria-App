@@ -5,14 +5,15 @@ import android.util.Log;
 import android.view.View;
 import androidx.activity.EdgeToEdge;
 import android.content.Intent;
+import android.widget.Toast;
+
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.lifecycle.ViewModelProvider;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
 
-import com.bumptech.glide.Glide;
-import com.example.orderingapp.Adapta.CategoryAdapter;
-import com.example.orderingapp.Adapta.PopularAdapter;
+import com.example.orderingapp.Adapter.CategoryAdapter;
+import com.example.orderingapp.Adapter.PopularAdapter;
 import com.example.orderingapp.ViewModel.MainViewModel;
 import com.example.orderingapp.databinding.ActivityMainBinding;
 
@@ -37,23 +38,20 @@ public class MainActivity extends AppCompatActivity {
         initCategory();
         initPopular();
 
-        // Ensure bottom navigation bar is visible
-        binding.bottomNavigationBar.setVisibility(View.VISIBLE);
-
-        // ✅ Order click listener
+// Order click listener
         binding.layoutOrder.setOnClickListener(v -> {
             Intent intent = new Intent(MainActivity.this, OrderSummaryActivity.class);
             startActivity(intent);
         });
 
-        // ✅ Cart click listener
-        binding.layoutCart.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent = new Intent(MainActivity.this, OrderingListActivity.class);
-                startActivity(intent);
-            }
+// Cart click listener
+        binding.layoutCart.setOnClickListener(v -> {
+            Toast.makeText(MainActivity.this, "Cart clicked!", Toast.LENGTH_SHORT).show();
+            Intent intent = new Intent(MainActivity.this, OrderingListActivity.class);
+            startActivity(intent);
         });
+
+
     }
 
 
