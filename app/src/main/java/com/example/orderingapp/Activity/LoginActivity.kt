@@ -28,6 +28,8 @@ class LoginActivity : AppCompatActivity() {
         val forgotPasswordText = findViewById<TextView>(R.id.txtForgotPassword)
         val createAccountText = findViewById<TextView>(R.id.dontHaveAccountTextView)
 
+
+
         // Set onClickListener for login button
         loginButton.setOnClickListener {
             val email = editTextEmail.text.toString()
@@ -67,6 +69,11 @@ class LoginActivity : AppCompatActivity() {
         // Set onClickListener for create account
         createAccountText.setOnClickListener {
             val intent = Intent(this, RegisterActivity::class.java)
+            startActivity(intent)
+        }
+
+        forgotPasswordText.setOnClickListener {
+            val intent = Intent(this, ForgotPasswordActivity::class.java)
             startActivity(intent)
         }
     }

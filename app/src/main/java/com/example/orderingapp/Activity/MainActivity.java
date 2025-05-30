@@ -1,18 +1,18 @@
 package com.example.orderingapp.Activity;
 
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
-
 import androidx.activity.EdgeToEdge;
+import android.content.Intent;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.lifecycle.ViewModelProvider;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
-import com.example.orderingapp.Adapta.PopularAdapter;
-
 
 import com.bumptech.glide.Glide;
 import com.example.orderingapp.Adapta.CategoryAdapter;
+import com.example.orderingapp.Adapta.PopularAdapter;
 import com.example.orderingapp.ViewModel.MainViewModel;
 import com.example.orderingapp.databinding.ActivityMainBinding;
 
@@ -31,66 +31,61 @@ public class MainActivity extends AppCompatActivity {
         binding = ActivityMainBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
 
-
         viewModel = new ViewModelProvider(this).get(MainViewModel.class);
 
-        initBanner();
+
         initCategory();
         initPopular();
-    }
 
-    private void initBanner() {
-        binding.progressBarCategory.setVisibility(View.VISIBLE);
+        // Ensure bottom navigation bar is visible
+        binding.bottomNavigationBar.setVisibility(View.VISIBLE);
 
-        viewModel.loadBanner().observe(this, banners -> {
-            if (banners != null && !banners.isEmpty()) {
-                Glide.with(MainActivity.this)
-                        .load(banners.get(0).getUrl())
-                        .into(binding.banner);
+        // ✅ Order click listener
+        binding.layoutOrder.setOnClickListener(v -> {
+            Intent intent = new Intent(MainActivity.this, OrderSummaryActivity.class);
+            startActivity(intent);
+        });
+
+        // ✅ Cart click listener
+        binding.layoutCart.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(MainActivity.this, OrderingListActivity.class);
+                startActivity(intent);
             }
-            binding.progressBarCategory.setVisibility(View.GONE);
         });
     }
+
 
     private void initCategory() {
         binding.progressBarCategory.setVisibility(View.VISIBLE);
 
         viewModel.loadCategory().observe(this, categories -> {
-            binding.recyclerViewCat.setLayoutManager(
-                    new LinearLayoutManager(
-                            MainActivity.this,
-                            LinearLayoutManager.HORIZONTAL,
-                            false
-                    )
-            );
-            binding.recyclerViewCat.setAdapter(new CategoryAdapter(new ArrayList<>(categories)));
+            Log.d("MainActivity", "Categories loaded: " + (categories != null ? categories.size() : 0));
+            if (categories != null && !categories.isEmpty()) {
+                binding.recyclerViewCat.setLayoutManager(
+                        new LinearLayoutManager(MainActivity.this, LinearLayoutManager.HORIZONTAL, false)
+                );
+                binding.recyclerViewCat.setAdapter(new CategoryAdapter(new ArrayList<>(categories)));
+            } else {
+                Log.d("MainActivity", "No categories found");
+            }
             binding.progressBarCategory.setVisibility(View.GONE);
         });
     }
 
-//    private fun initPopular(){
-//        binding.progrssBarPopular.visibility=View.VISIBLE
-//                viewModel.loadPopular().oberverForever{
-//            binding.recyclerViewPopular.setLayoutManager= GridLayoutManager(context:this, spanCount:2 );
-//            binding.progressBarPopular.visibility=view.Gone
-//        }
-//        viewModel.loadPopular()
-//    }
-private void initPopular() {
-    binding.progressBarPopular.setVisibility(View.VISIBLE);
+    private void initPopular() {
+        binding.progressBarPopular.setVisibility(View.VISIBLE);
 
-    viewModel.loadPopular().observeForever(items -> {
-        // Set layout manager
-        binding.recyclerViewPopular.setLayoutManager(new GridLayoutManager(this, 2));
-
-        // Set adapter with your items
-        binding.recyclerViewPopular.setAdapter(new PopularAdapter(items));
-
-        // Hide progress bar
-        binding.progressBarPopular.setVisibility(View.GONE);
-    });
-}
-
-
-
+        viewModel.loadPopular().observe(this, items -> {
+            Log.d("MainActivity", "Popular items loaded: " + (items != null ? items.size() : 0));
+            if (items != null && !items.isEmpty()) {
+                binding.recyclerViewPopular.setLayoutManager(new GridLayoutManager(this, 2));
+                binding.recyclerViewPopular.setAdapter(new PopularAdapter(items));
+            } else {
+                Log.d("MainActivity", "No popular items found");
+            }
+            binding.progressBarPopular.setVisibility(View.GONE);
+        });
+    }
 }

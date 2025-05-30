@@ -9,11 +9,17 @@ class ManagmentCart(private val context: Context) {
 
     private val tinyDB = TinyDB(context)
 
+    fun getListCart(): ArrayList<ItemsModel> {
+        return tinyDB.getListObject("CartList", ItemsModel::class.java) ?: arrayListOf()
+    }
+
+    // Insert new item or update quantity to exact number in item
     fun insertItems(item: ItemsModel) {
         val listItem = getListCart()
         val index = listItem.indexOfFirst { it.title == item.title }
 
         if (index >= 0) {
+            // Update quantity to the value inside item
             listItem[index].numberIncart = item.numberIncart
         } else {
             listItem.add(item)
@@ -23,10 +29,12 @@ class ManagmentCart(private val context: Context) {
         Toast.makeText(context, "Added to your Cart", Toast.LENGTH_SHORT).show()
     }
 
-    fun getListCart(): ArrayList<ItemsModel> {
-        return tinyDB.getListObject("CartList", ItemsModel::class.java) ?: arrayListOf()
+    // Save entire list at once
+    fun insertItemsList(items: ArrayList<ItemsModel>) {
+        tinyDB.putListObject("CartList", items)
     }
 
+    // Increase quantity of item at position by 1
     fun plusItem(listItems: ArrayList<ItemsModel>, position: Int, listener: ChangeNumberItemsListener) {
         val item = listItems.getOrNull(position)
         item?.let {
@@ -36,10 +44,11 @@ class ManagmentCart(private val context: Context) {
         }
     }
 
+    // Decrease quantity or remove item if quantity is 1
     fun minusItem(listItems: ArrayList<ItemsModel>, position: Int, listener: ChangeNumberItemsListener) {
         val item = listItems.getOrNull(position)
         if (item != null) {
-            if (item.numberIncart == 1) {
+            if (item.numberIncart <= 1) {
                 listItems.removeAt(position)
             } else {
                 item.numberIncart--
@@ -49,6 +58,7 @@ class ManagmentCart(private val context: Context) {
         }
     }
 
+    // Remove item completely by position
     fun removeItem(listItems: ArrayList<ItemsModel>, position: Int, listener: ChangeNumberItemsListener) {
         listItems.getOrNull(position)?.let {
             listItems.removeAt(position)

@@ -124,7 +124,7 @@
             android:layout_marginTop="16dp"
             android:text="Create Account"
             android:textSize="20sp"
-            android:backgroundTint="@color/Yellow"
+            android:backgroundTint="@color/Peach"
             android:textColor="@color/Deepteal"
             app:layout_constraintTop_toBottomOf="@id/etConfirmPassword"
             app:layout_constraintStart_toStartOf="parent"

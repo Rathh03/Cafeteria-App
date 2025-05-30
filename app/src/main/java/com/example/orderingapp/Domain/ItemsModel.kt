@@ -1,5 +1,6 @@
 package com.example.orderingapp.Domain
 
+import com.example.orderingapp.Domain.ItemsModel
 import java.io.Serializable
 
 data class ItemsModel(

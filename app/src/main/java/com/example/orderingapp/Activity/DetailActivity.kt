@@ -34,6 +34,7 @@ class DetailActivity : AppCompatActivity() {
         binding.priceTxt.text = "$" + item.price
         binding.ratingTxt.text = item.rating.toString()
 
+
         // Add to Cart Button
         binding.addToCartBtn.setOnClickListener {
             item.numberIncart = binding.numberItemTxt.text.toString().toInt()

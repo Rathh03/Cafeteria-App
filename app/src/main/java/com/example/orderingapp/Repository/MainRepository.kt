@@ -17,7 +17,7 @@ class MainRepository {
         val listData = MutableLiveData<MutableList<BannerModel>>()
         val ref = firebaseDatabase.getReference("Banner")
 
-        ref.addValueEventListener(object : ValueEventListener {
+        ref.addListenerForSingleValueEvent(object : ValueEventListener {
             override fun onDataChange(snapshot: DataSnapshot) {
                 val list = mutableListOf<BannerModel>()
                 for (childSnapshot in snapshot.children) {
@@ -28,7 +28,8 @@ class MainRepository {
             }
 
             override fun onCancelled(error: DatabaseError) {
-                TODO("Not yet implemented")
+                // You can log or handle the error here instead of TODO()
+                // e.g. Log.e("MainRepository", "Failed to load banner: ${error.message}")
             }
         })
 
@@ -39,7 +40,7 @@ class MainRepository {
         val listData = MutableLiveData<MutableList<CategoryModel>>()
         val ref = firebaseDatabase.getReference("Category")
 
-        ref.addValueEventListener(object : ValueEventListener {
+        ref.addListenerForSingleValueEvent(object : ValueEventListener {
             override fun onDataChange(snapshot: DataSnapshot) {
                 val list = mutableListOf<CategoryModel>()
                 for (childSnapshot in snapshot.children) {
@@ -50,7 +51,7 @@ class MainRepository {
             }
 
             override fun onCancelled(error: DatabaseError) {
-                TODO("Not yet implemented")
+                // Handle error
             }
         })
 
@@ -61,7 +62,7 @@ class MainRepository {
         val listData = MutableLiveData<MutableList<ItemsModel>>()
         val ref = firebaseDatabase.getReference("Popular")
 
-        ref.addValueEventListener(object : ValueEventListener {
+        ref.addListenerForSingleValueEvent(object : ValueEventListener {
             override fun onDataChange(snapshot: DataSnapshot) {
                 val list = mutableListOf<ItemsModel>()
                 for (childSnapshot in snapshot.children) {
@@ -72,10 +73,11 @@ class MainRepository {
             }
 
             override fun onCancelled(error: DatabaseError) {
-                TODO("Not yet implemented")
+                // Handle error
             }
         })
 
         return listData
     }
 }
+
