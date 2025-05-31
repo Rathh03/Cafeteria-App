@@ -97,10 +97,16 @@
                     android:id="@+id/btnConfirmOrder"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="20dp"
-                    android:background="@color/Peach"
                     android:text="Confirm"
-                    android:textColor="@color/white" />
+                    android:layout_marginStart="18dp"
+                    android:layout_marginTop="30dp"
+                    android:layout_marginEnd="19dp"
+                    android:backgroundTint="@color/Peach"
+                    android:textColor="@color/black"
+                    android:textStyle="bold"
+                    android:textSize="15sp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent" />
             </LinearLayout>
 
         </LinearLayout>
